@@ -7,7 +7,7 @@ name = "ml_ops_project"
 version = "0.0.1"
 description = "A short description of the project."
 authors = [
-  { name = "Sleaff", email = "your@email.com" },
+  { name = "Sleaff", email = "wowkenneth@email.com" },
 ]
 
 keywords = ["machine learning", "MLOps"]
@@ -18,7 +18,13 @@ classifiers = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dvc>=3.66.0",
+    "dvc-gdrive>=3.0.1",
     "fastapi==0.115.6",
+    "gdown>=5.2.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.0",
+    "scikit-learn>=1.8.0",
     "torch==2.6.0",
     "typer==0.15.1",
     "uvicorn==0.34.0",
@@ -51,6 +57,7 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [tool.ruff]
+lint.select = ["I"]
 line-length = 120
 
 [tool.coverage.run]
