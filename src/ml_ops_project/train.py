@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
 import torch
 import typer
-from data import corrupt_mnist
-from model import MyModel
+# from data import corrupt_mnist
+# from model import MyModel
+from ml_ops_project.data import corrupt_mnist
+from ml_ops_project.model import MyModel
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 

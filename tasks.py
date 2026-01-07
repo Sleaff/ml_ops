@@ -6,7 +6,6 @@ WINDOWS = os.name == "nt"
 PROJECT_NAME = "ml_ops_project"
 PYTHON_VERSION = "3.12"
 
-
 # Project commands
 @task
 def preprocess_data(ctx: Context) -> None:
@@ -63,3 +62,16 @@ def build_docs(ctx: Context) -> None:
 def serve_docs(ctx: Context) -> None:
     """Serve documentation."""
     ctx.run("uv run mkdocs serve --config-file docs/mkdocs.yaml", echo=True, pty=not WINDOWS)
+
+# Exercise tasks
+@task
+def python(ctx: Context) -> None:
+    """Run python"""
+    ctx.run("which python" if os.name != "nt" else "where python")
+
+@task
+def git(ctx: Context, message: str) -> None:
+    """Run git add commit push"""
+    ctx.run("git add .")
+    ctx.run(f'git commit -m "{message}"')
+    ctx.run("git push")

@@ -30,6 +30,12 @@ dependencies = [
     "uvicorn==0.34.0",
 ]
 
+[project.scripts]
+train = "ml_ops_project.train:train"
+evaluate = "ml_ops_project.evaluate:evaluate"
+visualize = "ml_ops_project.visualize:visualize"
+greetings = "ml_ops_project.iris.iris_classifier:app"
+
 [dependency-groups]
 dev = [
     "coverage==7.6.9",
