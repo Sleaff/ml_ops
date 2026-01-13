@@ -23,7 +23,7 @@ jobs:
           enable-cache: true
 
       - name: Sync dependencies
-        run: uv sync
+        run: uv sync --frozen
 
       - name: ruff check
         run: |
@@ -31,4 +31,4 @@ jobs:
 
       - name: ruff format
         run: |
-          uv run ruff format .
+          uv run ruff format --check .
