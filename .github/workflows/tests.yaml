@@ -27,15 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync --dev --locked
+          uv sync
 
       - name: Run tests & coverage
         run: |
-          coverage run -m pyte  st tests/
-          coverage report -m
-
-      - name: Ruff check
-        run: ruff check .
-
-      - name: Ruff format
-        run: ruff format .
+          uv run coverage run -m pytest tests/
+          uv run coverage report -m

@@ -29,7 +29,7 @@ jobs:
         run: uv run pre-commit autoupdate
 
       - name: Run pre-commit autoupdate
-        run: pre-commit autoupdate
+        run: uv run pre-commit autoupdate
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
