@@ -2039,9 +2039,9 @@ tqdm==4.67.1 \
     #   gdown
     #   pydrive2
     #   scmrepo
-typer==0.15.1 \
-    --hash=sha256:7994fb7b8155b64d3402518560648446072864beefd44aa2dc36972a5972e847 \
-    --hash=sha256:a0588c0a7fa68a1978a069818657778f86abe6ff5ea6abf472f940a08bfe4f0a
+typer==0.21.1 \
+    --hash=sha256:7985e89081c636b88d172c2ee0cfe33c253160994d47bdfdc302defd7d1f1d01 \
+    --hash=sha256:ea835607cd752343b6b2b7ce676893e5a0324082268b48f27aa058bdb7d2145d
     # via
     #   gto
     #   ml-ops-project
