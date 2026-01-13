@@ -1,10 +1,45 @@
 import torch
 import typer
+from torch.utils.data import Dataset
 
 
 def normalize(images: torch.Tensor) -> torch.Tensor:
     """Normalize images."""
     return (images - images.mean()) / images.std()
+
+
+class MyDataset(Dataset):
+    """Custom Dataset for corrupt MNIST data."""
+
+    def __init__(self, data_dir: str) -> None:
+        """Initialize the dataset.
+
+        Args:
+            data_dir: Directory containing the data files
+        """
+        self.data_dir = data_dir
+        # Load training data
+        train_images, train_target = [], []
+        for i in range(6):
+            train_images.append(torch.load(f"{data_dir}/train_images_{i}.pt"))
+            train_target.append(torch.load(f"{data_dir}/train_target_{i}.pt"))
+        self.images = torch.cat(train_images)
+        self.targets = torch.cat(train_target)
+
+    def __len__(self) -> int:
+        """Return the number of samples in the dataset."""
+        return len(self.images)
+
+    def __getitem__(self, idx: int) -> tuple[torch.Tensor, torch.Tensor]:
+        """Get a sample from the dataset.
+
+        Args:
+            idx: Index of the sample
+
+        Returns:
+            Tuple of (image, target)
+        """
+        return self.images[idx], self.targets[idx]
 
 
 def preprocess_data(raw_dir: str, processed_dir: str) -> None:
