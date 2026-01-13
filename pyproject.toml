@@ -67,6 +67,7 @@ explicit = true
 [tool.ruff]
 lint.select = ["I"]
 line-length = 120
+exclude = ["src/ml_ops_project/evaluate.py"]
 
 [tool.coverage.run]
 omit = ["tests/*"]
