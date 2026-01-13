@@ -1,13 +1,13 @@
+import pickle
+from typing import Annotated
+
+import typer
 from sklearn.datasets import load_breast_cancer
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-
-import typer
-from typing import Annotated
-import pickle
 
 app = typer.Typer()
 train_app = typer.Typer()
