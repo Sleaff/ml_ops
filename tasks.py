@@ -66,12 +66,29 @@ def serve_docs(ctx: Context) -> None:
 # Exercise tasks
 @task
 def python(ctx: Context) -> None:
-    """Run python"""
+    """Run python command to show which python is used."""
     ctx.run("which python" if os.name != "nt" else "where python")
 
 @task
 def git(ctx: Context, message: str) -> None:
-    """Run git add commit push"""
+    """Run git add commit push."""
     ctx.run("git add .")
     ctx.run(f'git commit -m "{message}"')
     ctx.run("git push")
+
+@task
+def dvc(ctx: Context, folder="data", message="Add new data") -> None:
+    """Run dvc add, git commit, and push for data versioning."""
+    ctx.run(f"dvc add {folder}")
+    ctx.run(f"git add {folder}.dvc .gitignore")
+    ctx.run(f'git commit -m "{message}"')
+    ctx.run("git push")
+    ctx.run("dvc push")
+
+@task
+def pull_data(ctx: Context) -> None:
+    ctx.run("dvc pull", echo=True, pty=not WINDOWS)
+
+@task(pull_data)
+def train(ctx: Context) -> None:
+    ctx.run("train", echo=True, pty=not WINDOWS)
