@@ -27,6 +27,7 @@ scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
 
+
 @train_app.command()
 def svm(kernel: str = "linear", output_file: Annotated[str, typer.Option("--output", "-o")] = "model.ckpt") -> None:
     """Train a SVM model."""
@@ -46,8 +47,11 @@ def knn(n_neighbors: int = 5, output_file: Annotated[str, typer.Option("--output
     with open(output_file, "wb") as f:
         pickle.dump(model, f)
 
+
 @app.command()
-def evaluate(model_file: Annotated[str, typer.Option("--model", "-m", help="Path to the saved model file")] = "model.pkl"):
+def evaluate(
+    model_file: Annotated[str, typer.Option("--model", "-m", help="Path to the saved model file")] = "model.pkl"
+):
     """Evaluate a saved model."""
     with open(model_file, "rb") as f:
         model = pickle.load(f)

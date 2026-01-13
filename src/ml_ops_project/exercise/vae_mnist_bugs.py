@@ -61,7 +61,6 @@ class Encoder(nn.Module):
         return mean + std * epsilon
 
 
-
 class Decoder(nn.Module):
     """Decoder module for VAE."""
 

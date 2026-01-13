@@ -6,6 +6,7 @@ WINDOWS = os.name == "nt"
 PROJECT_NAME = "ml_ops_project"
 PYTHON_VERSION = "3.12"
 
+
 # Project commands
 @task
 def preprocess_data(ctx: Context) -> None:
@@ -63,11 +64,13 @@ def serve_docs(ctx: Context) -> None:
     """Serve documentation."""
     ctx.run("uv run mkdocs serve --config-file docs/mkdocs.yaml", echo=True, pty=not WINDOWS)
 
+
 # Exercise tasks
 @task
 def python(ctx: Context) -> None:
     """Run python command to show which python is used."""
     ctx.run("which python" if os.name != "nt" else "where python")
+
 
 @task
 def git(ctx: Context, message: str) -> None:
@@ -75,6 +78,7 @@ def git(ctx: Context, message: str) -> None:
     ctx.run("git add .")
     ctx.run(f'git commit -m "{message}"')
     ctx.run("git push")
+
 
 @task
 def dvc(ctx: Context, folder="data", message="Add new data") -> None:
@@ -85,9 +89,11 @@ def dvc(ctx: Context, folder="data", message="Add new data") -> None:
     ctx.run("git push")
     ctx.run("dvc push")
 
+
 @task
 def pull_data(ctx: Context) -> None:
     ctx.run("dvc pull", echo=True, pty=not WINDOWS)
+
 
 @task(pull_data)
 def train(ctx: Context) -> None:
