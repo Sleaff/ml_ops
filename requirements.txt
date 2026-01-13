@@ -506,9 +506,9 @@ dvc==3.66.0 \
     # via
     #   dvc-gdrive
     #   ml-ops-project
-dvc-data==3.17.0 \
-    --hash=sha256:41fbd15e9a18b83a5388f34bad1a6500a101d77e8738d1ca4f8678d88f425e35 \
-    --hash=sha256:c380c32cb3bf52195e285b0d84bcc0cf8eed0fb09ba9173bdf53b279a74481ce
+dvc-data==3.18.2 \
+    --hash=sha256:71c0bf7e62514dbad06db796a3f3aac5ccae672222b6be67029157e4efa5d359 \
+    --hash=sha256:a8114b5bb909823793c63f1de7db30acc5cc7cc0e170704d99a3d9dccc0101e9
     # via dvc
 dvc-gdrive==3.0.1 \
     --hash=sha256:9ee784501aa5229d4c02f195e783836d0d466c7218cf57bddcfa0f827ba5766c \
