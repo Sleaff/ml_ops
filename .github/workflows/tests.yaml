@@ -33,5 +33,11 @@ jobs:
 
       - name: Run tests & coverage
         run: |
-          coverage run -m pytest tests/
+          coverage run -m pyte  st tests/
           coverage report -m
+
+      - name: Ruff check
+        run: ruff check .
+
+      - name: Ruff format
+        run: ruff format .
