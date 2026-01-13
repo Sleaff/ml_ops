@@ -1,8 +1,8 @@
-from unittest.mock import patch, MagicMock
-import torch
-from torch.utils.data import Dataset
+from unittest.mock import MagicMock, patch
 
-from ml_ops_project.data import MyDataset, normalize, corrupt_mnist
+import torch
+from ml_ops_project.data import MyDataset, corrupt_mnist, normalize
+from torch.utils.data import Dataset
 
 
 def test_normalize():
@@ -13,7 +13,7 @@ def test_normalize():
     assert abs(normalized.std().item() - 1.0) < 1e-6  # Std should be close to 1
 
 
-@patch('torch.load')
+@patch("torch.load")
 def test_my_dataset(mock_load):
     """Test the MyDataset class."""
     # Mock the torch.load to return dummy data
@@ -51,14 +51,14 @@ def test_my_dataset(mock_load):
     assert isinstance(target, torch.Tensor)
 
 
-@patch('torch.load')
+@patch("torch.load")
 def test_corrupt_mnist(mock_load):
     """Test the corrupt_mnist function."""
     # Mock the data loading
     mock_load.side_effect = [
         torch.randn(100, 1, 28, 28),  # train_images
         torch.randint(0, 10, (100,)),  # train_target
-        torch.randn(20, 1, 28, 28),   # test_images
+        torch.randn(20, 1, 28, 28),  # test_images
         torch.randint(0, 10, (20,)),  # test_target
     ]
 
